@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="..\Styles\estilo.css">
+    <link rel="stylesheet" href="..\Styles\entrada.css">
+    <title>Entrar</title>
+</head>
+<body>
+    <div id="logo">
+        <img src="..\Images\Home\logo.png" alt="logomarca">
+    </div>
+    <div id="entrada">
+        <form id="loginForm">
+            <h1>Login</h1>
+            Digite seu E-mail:
+            <input type="text" id="emailInput" placeholder="E-mail">
+            <br><br>
+            Digite sua senha:
+            <input type="password" id="senhaInput" placeholder="Senha">
+            <br><br>
+            <button type="button" onclick="login()">Entrar</button>
+        </form>
+        <br>
+        <p>Ainda não possui conta? <a href="register.html" target="_self">Clique aqui</a></p>
+    </div>
+
+    <script>
+        async function login() {
+            const email = document.getElementById('emailInput').value;
+            const senha = document.getElementById('senhaInput').value;
+
+            const response = await fetch('/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email, senha })
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                window.location.href = '/Pages/index.html';
+            } else {
+                alert('Erro ao fazer login');
+            }
+        }
+    </script>
+</body>
+</html>
