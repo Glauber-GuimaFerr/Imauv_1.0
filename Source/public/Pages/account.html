@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="..\Styles\estilo.css">
+    <link rel="stylesheet" href="..\Styles\conta.css">
+    <title>Sua conta</title>
+</head>
+<body>
+    <div id="poli01">
+        <div class="icons">
+            <div class="containerRI">
+                <a href="index.html" target="_self">
+                    <span class="tooltip" id="tooltipRI">Retornar ao sistema</span>
+                    <img src="..\Images\Menu\return-icon.png" class="return" alt="retornar ao aplicativo">
+                </a>
+            </div>
+            <div class="containerRA">
+                <a href="login.html" target="_self">
+                    <span class="tooltip" id="tooltipRA">Trocar de conta</span>
+                    <img src="..\Images\Menu\avatar-icon.png" class="return" alt="logout">
+                </a>
+            </div>
+            <img src="..\Images\Home\logo.png" alt="logomarca">
+        </div>  
+    </div>
+    <div id="poli02">
+        <h1>Detalhes</h1>
+        <br><br>
+        <h2>Nome: </h2><p id="nome"></p>
+        <h2>Email: </h2><p id="email"></p>
+        <h2>CPF: </h2><p id="cpf"></p>
+        <h2>Cidade: </h2><p id="cidade"></p>
+    </div>
+
+    <script>
+        async function carregarDados() {
+            const response = await fetch('/me');
+            const data = await response.json();
+
+            if (data.success) {
+                document.getElementById('nome').textContent = data.user.nome;
+                document.getElementById('email').textContent = data.user.email;
+                document.getElementById('cpf').textContent = data.user.cpf;
+                document.getElementById('cidade').textContent = data.user.endereco;
+            } else {
+                alert('Erro ao carregar dados do usuário');
+                window.location.href = '/Pages/login.html';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', carregarDados);
+    </script>
+</body>
+</html>

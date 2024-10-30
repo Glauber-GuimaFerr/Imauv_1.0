@@ -1,0 +1,71 @@
+@charset "UTF-8";
+
+*
+{
+    margin: 0px;
+    padding: 0px;
+}
+
+#poli01
+{
+    float: left;
+    height: 100vh;
+    width: 30%;
+    background-color:blue;
+}
+
+.icons img
+{
+    height: 150px;
+    width: 170px;
+    display: block;
+    margin-top: 60px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#poli02
+{
+    float: left;
+    height: 100vh;
+    width: 70%;
+    background-color:green;
+}
+
+h1
+{
+    margin-left: 20px;
+    font-size: 60pt;
+}
+
+h2
+{
+    margin-left: 40px;
+    font-size: 30pt;
+}
+
+p
+{
+    margin-left: 40px;
+    font-size: 20pt;
+}
+
+.containerRI, .containerRA {
+    position: relative;
+}
+
+.tooltip {
+    visibility: hidden;
+    position: absolute;
+    background-color: #333;
+    color: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.containerRI:hover #tooltipRI, .containerRA:hover #tooltipRA {
+    visibility: visible;
+}
