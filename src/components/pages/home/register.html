@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link rel="shortcut icon" href="/assets/imauv.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/components/pages/home/home.css">
+</head>
+<body>
+    <div class="logo">
+        <img src="/img/home/logo.png" alt="logomarca">
+    </div>
+    <div class="homeForm">
+        <form id="registerForm">
+            <div class="campoForm">
+                <label>Insira seu nome:</label>
+                <input type="text" name="f_nome" id="f_nome" placeholder="Nome" required>
+            </div>
+            <div class="campoForm">
+                <label>Insira seu CPF:</label>
+                <input type="text" name="f_cpf" id="f_cpf" placeholder="CPF" required>
+            </div>
+            <div class="campoForm">
+                <label>Selecione sua cidade:</label>
+                <select name="f_endereco" id="f_endereco" required>
+                    <option value="Camaçari">Camaçari</option>
+                    <option value="Candeias">Candeias</option>
+                    <option value="Dias d'Ávila">Dias d'Ávila</option>
+                    <option value="Itaparica">Itaparica</option>
+                    <option value="Lauro de Freitas">Lauro de Freitas</option>
+                    <option value="Madre de Deus">Madre de Deus</option>
+                    <option value="Mata de São João">Mata de São João</option>
+                    <option value="Pojuca">Pojuca</option>
+                    <option value="Salvador">Salvador</option>
+                    <option value="São Francisco do Conde">São Francisco do Conde</option>
+                    <option value="São Sebastião do Passé">São Sebastião do Passé</option>
+                    <option value="Simões Filho">Simões Filho</option>
+                    <option value="Vera Cruz">Vera Cruz</option>
+                </select>
+            </div>
+            <div class="campoForm">
+                <label>Insira seu E-mail:</label>
+                <input type="text" name="f_email" id="f_email" placeholder="E-mail" required>
+            </div>
+            <div class="campoForm">
+                <label>Insira sua senha:</label>
+                <input type="password" name="f_senha" id="f_senha" placeholder="Senha" required>
+            </div>
+            <button type="button" id="btn_sign">Cadastre-se</button>
+        </form>
+        <p>
+            Fez o cadastro anteriormente? <a href="/components/pages/home/login.html" target="_self">Clique aqui</a>
+        </p>
+    </div>
+    <script src="/components/pages/home/register.js" type="module"></script>
+</body>
+</html>

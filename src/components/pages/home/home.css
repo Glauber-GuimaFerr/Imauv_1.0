@@ -1,0 +1,66 @@
+@charset "UTF-8";
+
+:root {
+    --azulEscuro: #091e64e6;
+    --branco: white;
+    --verde: green;
+}
+
+body {
+    background: url("/img/home/background.jpg") center center no-repeat fixed;
+    background-size: cover;
+}
+
+.logo {
+    height: 300px;
+    width: 100%;
+}
+
+.logo img {
+    height: 200px;
+    width: 300px;
+    display: block;
+    margin: 0px auto;
+}
+
+.homeForm {
+    background-color: var(--azulEscuro);
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%,-10%);
+    padding: 30px;
+    border-radius: 30px;
+    color: var(--branco);
+    text-align: center;
+}
+
+.campoForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.homeForm input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: none;
+    outline: none;
+}
+
+.homeForm select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: none;
+    outline: none;
+}
+
+.homeForm button {
+    font-size: 12pt;
+    width: 80%;
+    background-color: var(--verde);
+}

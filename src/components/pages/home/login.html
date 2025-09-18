@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrar</title>
+    <link rel="shortcut icon" href="/assets/imauv.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/components/pages/home/home.css">
+</head>
+<body>
+    <div class="logo">
+        <img src="/img/home/logo.png" alt="logomarca">
+    </div>
+    <div class="homeForm">
+        <form id="loginForm">
+            <h1>Login</h1>
+            <div class="campoForm">
+                <label>Digite seu E-mail:</label>
+                <input type="text" name="f_email" id="f_email" placeholder="E-mail" required>
+            </div>
+            <div class="campoForm">
+                <label>Digite sua senha:</label>
+                <input type="password" name="f_senha" id="f_senha" placeholder="Senha" required>
+            </div>
+            <button type="button" id="btn_login">Entrar</button>
+        </form>
+        <p>
+            Ainda não possui conta? <a href="/components/pages/home/register.html" target="_self">Clique aqui</a>
+        </p>
+    </div>
+    <script src="/components/pages/home/login.js" type="module"></script>
+</body>
+</html>
