@@ -1,71 +1,90 @@
 @charset "UTF-8";
 
-*
-{
-    margin: 0px;
-    padding: 0px;
+:root {
+    --azul1: #0000ff;
+    --azul2: #4545e7;
+    --verde1: #008000;
+    --verde2: #38d138;
+    --cinzaEscuro: #333;
+    --branco: #fff;
 }
 
-#poli01
-{
-    float: left;
+#grade {
+    width: 100vw;
     height: 100vh;
-    width: 30%;
-    background-color:blue;
+    display: grid;
+    grid-template: repeat(2, 100%) / 650px 1fr;
 }
 
-.icons img
-{
-    height: 150px;
-    width: 170px;
-    display: block;
-    margin-top: 60px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-#poli02
-{
-    float: left;
-    height: 100vh;
-    width: 70%;
-    background-color:green;
-}
-
-h1
-{
-    margin-left: 20px;
-    font-size: 60pt;
-}
-
-h2
-{
-    margin-left: 40px;
-    font-size: 30pt;
-}
-
-p
-{
-    margin-left: 40px;
-    font-size: 20pt;
-}
-
-.containerRI, .containerRA {
+.container {
     position: relative;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: start;
+    align-items: center;
+}
+
+.container2 {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: start;
+    align-content: center;
+}
+
+#g1 {
+    grid-area: 1 / 1 / 2 / 2;
+    background-image: linear-gradient(70deg, var(--azul1), var(--azul2));
+}
+
+#g2 {
+    grid-area: 1 / 2 / 2 / 3;
+    background-image: linear-gradient(280deg, var(--verde1), var(--verde2));
+}
+
+.container img {
+    height: 170px;
+    width: 190px;
+    margin-top: 120px;
 }
 
 .tooltip {
-    visibility: hidden;
-    position: absolute;
+    opacity: 0;
     background-color: #333;
+    text-align: center;
     color: #fff;
+    width: 160px;
     padding: 5px;
     border-radius: 5px;
-    top: -40px;
+    position: absolute;
+    top: 50px;
     left: 50%;
     transform: translateX(-50%);
+    transition: opacity 0.3s ease;
 }
 
-.containerRI:hover #tooltipRI, .containerRA:hover #tooltipRA {
-    visibility: visible;
+.return {
+    position: relative;
+}
+
+.return:hover .tooltip {
+    opacity: 1;
+}
+
+.container2 h1 {
+    margin-top: 10px;
+    margin-left: 40px;
+    font-size: 80pt;
+}
+
+.container2 h2 {
+    margin-top: 10px;
+    margin-left: 40px;
+    font-size: 50pt;
+}
+
+.container2 p {
+    margin-top: 10px;
+    margin-left: 40px;
+    font-size: 40pt;
+    color: #333;
 }

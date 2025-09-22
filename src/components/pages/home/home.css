@@ -26,7 +26,7 @@ body {
 .homeForm {
     background-color: var(--azulEscuro);
     position: absolute;
-    top: 30%;
+    top: 25%;
     left: 50%;
     transform: translate(-50%,-10%);
     padding: 30px;
@@ -40,7 +40,7 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-bottom: 20px;
+    margin: 25px 0px;
 }
 
 .homeForm input {
@@ -63,4 +63,5 @@ body {
     font-size: 12pt;
     width: 80%;
     background-color: var(--verde);
+    margin-bottom: 20px;
 }

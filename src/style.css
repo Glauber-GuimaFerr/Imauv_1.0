@@ -9,21 +9,14 @@
     --fonte: "Kanit", sans-serif;
 }
 
-body {
-    font-family: var(--fonte);
+* {
+    margin: 0px;
+    padding: 0px;
     box-sizing: border-box;
-}
-
-input {
-    font-family: var(--fonte);
-}
-
-select {
     font-family: var(--fonte);
 }
 
 button {
-    font-family: var(--fonte);
     padding: 10px;
     border: none;
     color: var(--cinza);
@@ -38,6 +31,7 @@ button:hover {
 
 a {
     color: white;
+    transition: 0.5s;
 }
 
 a:hover {

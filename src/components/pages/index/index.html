@@ -66,19 +66,6 @@
         <div id="mapID" class="main-panel"></div>       
         <div id="historys" class="panel"></div>      
     </div>
-    <script src="..\JS\script01.js"></script>    
-    <script>
-        async function carregarDados() {
-            const response = await fetch('/me');
-            const data = await response.json();
-
-            if (data.success) {
-                document.getElementById('n_agente').value = data.user.nome;
-            } else {
-                alert('Erro ao carregar dados do usuário');
-            }
-        }
-        document.addEventListener('DOMContentLoaded', carregarDados);
-    </script>
+    <script src="/components/pages/index/index.js" type="module"></script>    
 </body>
 </html>
