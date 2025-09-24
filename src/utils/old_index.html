@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imauv 1.1</title>
+    <link rel="shortcut icon" href="/assets/imauv.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/components/pages/index/index.css">    
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+</head>
+<body>
+    <div class="containerPanel">
+        <div id="pointCreate" class="panel">
+            <button class="close-btn" onclick="toggleLeftPanel('pointCreate');">X</button>
+            <form id="pointForm">
+                <h2>Adicionar Processo</h2>
+                <input type="hidden" id="n_agente" name="n_agente">
+                
+                <label for="num_processo">Número do Processo:</label>
+                <br>
+                <input type="text" id="num_processo" name="num_processo" required>
+                <br>
+                <label for="data_inicio">Data de Início:</label>
+                <br>
+                <input type="date" id="data_inicio" name="data_inicio" required>
+                <br>
+                <label for="descricao">Descrição:</label>
+                <br>
+                <textarea id="descricao" name="descricao" required></textarea>
+                <br>
+                <label for="localizacao">Endereço:</label>
+                <br>
+                <input type="text" id="localizacao" name="localizacao" required>
+                <br>
+                <label for="classificacao">Classificação:</label>
+                <br>
+                <select id="classificacao" name="classificacao" required>
+                    <option value="Baixo">Baixo</option>
+                    <option value="Médio">Médio</option>
+                    <option value="Alto">Alto</option>
+                </select>
+                <br>
+                <label for="etapa">Etapa:</label>
+                <br>
+                <select id="etapa" name="etapa" required>
+                    <option value="Processamento">Processamento</option>
+                    <option value="Pendente">Pendente</option>
+                </select>
+                <br>
+                <label for="prazo">Prazo (dias):</label>
+                <br>
+                <input type="number" id="prazo" name="prazo" required>
+                
+                <input type="hidden" id="latitude" name="latitude">
+                <input type="hidden" id="longitude" name="longitude">
+                <br>                
+                <button id="btnAddPoint" onclick="addPoint();">Adicionar</button>
+            </form>         
+        </div>           
+        <div id="pointEdit" class="panel"></div>     
+        <div id="myPoints" class="panel"></div> 
+        <div id="mapID" class="main-panel"></div>       
+        <div id="historys" class="panel"></div>      
+    </div>
+    <script src="/components/pages/index/index.js" type="module"></script>    
+</body>
+</html>

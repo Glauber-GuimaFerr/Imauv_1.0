@@ -9,7 +9,7 @@
     --branco: #fff;
 }
 
-#grade {
+.grade {
     width: 100vw;
     height: 100vh;
     display: grid;
@@ -17,7 +17,6 @@
 }
 
 .container {
-    position: relative;
     display: flex;
     flex-flow: column nowrap;
     justify-content: start;
@@ -31,12 +30,12 @@
     align-content: center;
 }
 
-#g1 {
+.g1 {
     grid-area: 1 / 1 / 2 / 2;
     background-image: linear-gradient(70deg, var(--azul1), var(--azul2));
 }
 
-#g2 {
+.g2 {
     grid-area: 1 / 2 / 2 / 3;
     background-image: linear-gradient(280deg, var(--verde1), var(--verde2));
 }
@@ -86,5 +85,5 @@
     margin-top: 10px;
     margin-left: 40px;
     font-size: 40pt;
-    color: #333;
+    color: #fff;
 }
