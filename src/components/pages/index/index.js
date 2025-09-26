@@ -52,7 +52,7 @@ function success(pos){
 
 
                 let currentPos = L.marker([pos.coords.latitude, pos.coords.longitude], {icon: currentIcon}).bindPopup('Sua localização!').addTo(map) /* Posição atual */
-        
+
                 // Barra de pesquisa
                 const geocoder = L.Control.geocoder({defaultMarkGeocode: false})
                 .on('markgeocode', function(e) {
@@ -60,10 +60,22 @@ function success(pos){
                         const marker = L.marker(latlng, {icon: grayIcon}).addTo(map)
                         map.fitBounds(e.geocode.bbox)
                 }).addTo(map)
-    }else{
-        map.remove() /* Remoção do mapa */  
-        map = L.map('mapID').setView([pos.coords.latitude, pos.coords.longitude], 20)      
-    }  
+
+                // Função de marcar ponto
+                let ponto
+
+                map.on('click', function(e) {
+                        lat = e.latlng.lat
+                        lng = e.latlng.lng       
+                        if(ponto){
+                                map.removeLayer(ponto)
+                        }
+                        ponto = L.marker(e.latlng, {icon: blueIcon}).addTo(map)
+                })
+        }else{
+                map.remove() /* Remoção do mapa */  
+                map = L.map('mapID').setView([pos.coords.latitude, pos.coords.longitude], 20)      
+        }  
 }
 
 // Função de erro da API
