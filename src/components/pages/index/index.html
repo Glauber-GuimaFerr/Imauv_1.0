@@ -13,7 +13,19 @@
     <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
 </head>
 <body>
-    <div id="mapID"></div>           
+    <div id="mapID"></div> 
+    <div id="elementosBody">
+        <div id="containerEsquerda">
+            <img src="/img/menu/location-searching-icon.png" id="btnCurrPos" class="btn" title="Voltar para sua localização atual" alt="Botão de lupa">
+            <img src="/img/menu/list-icon.png" id="btnListProcess" class="btn" title="Ver seus processos" alt="Botão de lista">
+            <img src="/img/menu/edit-icon.png" id="btnEditProcess" class="btn" title="Editar seus processos" alt="Botão de edição">
+            <img src="/img/menu/plus-icon.png" id="btnAddProcess" class="btn" title="Adicionar processo" alt="Botão de adicionar">
+        </div>
+        <div id="containerDireita">
+            <img src="/img/menu/user-icon.png" id="btnUser" class="btn" title="Informações do usuário" alt="Botão de usuário">
+            <img src="/img/menu/history-icon.png" id="btnHistory" class="btn" title="Histórico de processos concluídos" alt="Botão de histórico">
+        </div>
+    </div>   
     <script src="/components/pages/index/index.js" type="module"></script>    
 </body>
 </html>

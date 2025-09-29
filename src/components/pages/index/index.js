@@ -3,10 +3,13 @@ let watchID = navigator.geolocation.getCurrentPosition(success, error, {enableHi
 let map /* Mapa */
 let lat, lng /* Coordenadas */
 
+// Variáveis importantes
+const elementosBody = document.querySelector('#elementosBody')
+
 // Função success
 function success(pos){
         if(map === undefined){
-                map = L.map('mapID').setView([pos.coords.latitude, pos.coords.longitude], 20) /* Renderização do mapa na posição atual */
+                map = L.map('mapID').setView([pos.coords.latitude, pos.coords.longitude], 18) /* Renderização do mapa na posição atual */
 
                 // Camadas OSM 
                 const OpenStreetMap_Mapnik = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { 
@@ -53,14 +56,6 @@ function success(pos){
 
                 let currentPos = L.marker([pos.coords.latitude, pos.coords.longitude], {icon: currentIcon}).bindPopup('Sua localização!').addTo(map) /* Posição atual */
 
-                // Barra de pesquisa
-                const geocoder = L.Control.geocoder({defaultMarkGeocode: false})
-                .on('markgeocode', function(e) {
-                        let latlng = e.geocode.center
-                        const marker = L.marker(latlng, {icon: grayIcon}).addTo(map)
-                        map.fitBounds(e.geocode.bbox)
-                }).addTo(map)
-
                 // Função de marcar ponto
                 let ponto
 
@@ -72,6 +67,20 @@ function success(pos){
                         }
                         ponto = L.marker(e.latlng, {icon: blueIcon}).addTo(map)
                 })
+
+                // Barra de pesquisa
+                const geocoder = L.Control.geocoder({defaultMarkGeocode: false})
+                .on('markgeocode', function(e) {
+                        let latlng = e.geocode.center
+                        const marker = L.marker(latlng, {icon: grayIcon}).addTo(map)
+                        map.fitBounds(e.geocode.bbox)
+                }).addTo(map)
+                
+                // Variáveis de elementos Leaflet
+                const barraPesquisa = document.querySelectorAll('.leaflet-control-geocoder.leaflet-bar.leaflet-control')[0]
+                const botoesZoom = document.querySelectorAll('.leaflet-control-zoom.leaflet-bar.leaflet-control')[0]
+                const botoesCamada = document.querySelectorAll('.leaflet-control-layers.leaflet-control')[0]
+                console.log(barraPesquisa.value)
         }else{
                 map.remove() /* Remoção do mapa */  
                 map = L.map('mapID').setView([pos.coords.latitude, pos.coords.longitude], 20)      
