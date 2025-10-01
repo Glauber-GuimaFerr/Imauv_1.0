@@ -73,3 +73,7 @@ a.leaflet-control-zoom-out {
     display: flex;
     flex-direction: column;
 }
+
+.btn {
+    cursor: pointer;
+}
