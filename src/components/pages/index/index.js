@@ -2,14 +2,16 @@
 let watchID = navigator.geolocation.getCurrentPosition(success, error, {enableHighAccuracy: true, timeout: 5000}) /* Permissão GPS */
 let map /* Mapa */
 let lat, lng /* Coordenadas */
+const zoom = 18 /* Escala */
 
 // Variáveis importantes
 const elementosBody = document.querySelector('#elementosBody')
+const btnCurrPos = document.querySelector('#btnCurrPos')
 
 // Função success
 function success(pos){
         if(map === undefined){
-                map = L.map('mapID').setView([pos.coords.latitude, pos.coords.longitude], 18) /* Renderização do mapa na posição atual */
+                map = L.map('mapID').setView([pos.coords.latitude, pos.coords.longitude], zoom) /* Renderização do mapa na posição atual */
 
                 // Camadas OSM 
                 const OpenStreetMap_Mapnik = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { 
@@ -81,9 +83,18 @@ function success(pos){
                 const botoesZoom = document.querySelectorAll('.leaflet-control-zoom.leaflet-bar.leaflet-control')[0]
                 const botoesCamada = document.querySelectorAll('.leaflet-control-layers.leaflet-control')[0]
                 console.log(barraPesquisa.value)
+
+                // Botão para retornar a posição atual
+                btnCurrPos.addEventListener('click', (evt) => {
+                        if(navigator.geolocation){
+                                map.setView([pos.coords.latitude, pos.coords.longitude], zoom)
+                        }else{
+                                alert('Geolocalização não é suportada pelo seu navegador.')
+                        }
+                })
         }else{
                 map.remove() /* Remoção do mapa */  
-                map = L.map('mapID').setView([pos.coords.latitude, pos.coords.longitude], 20)      
+                map = L.map('mapID').setView([pos.coords.latitude, pos.coords.longitude], zoom)      
         }  
 }
 
