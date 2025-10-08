@@ -17,8 +17,11 @@
 }
 
 button {
+    width: 80%;
+    margin-bottom: 20px;
     padding: 10px;
     border: none;
+    font-size: 12pt;
     color: var(--cinza);
     transition: 0.5s;
 }
@@ -37,6 +40,30 @@ a {
 a:hover {
     color: var(--verdeFolha) !important;
     cursor: pointer;
+}
+
+.campoForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 25px 0px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: none;
+    outline: none;
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: none;
+    outline: none;
 }
 
 .json {

@@ -35,33 +35,6 @@ body {
     text-align: center;
 }
 
-.campoForm {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    margin: 25px 0px;
-}
-
-.homeForm input {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    border: none;
-    outline: none;
-}
-
-.homeForm select {
-    width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    border: none;
-    outline: none;
-}
-
 .homeForm button {
-    font-size: 12pt;
-    width: 80%;
     background-color: var(--verde);
-    margin-bottom: 20px;
 }

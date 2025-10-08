@@ -1,7 +1,11 @@
 @charset "UTF-8";
 :root {
     --azulClaro: #4545e7;
+    --azul1: #0000ff;
+    --azul2: #4545e7;
     --verdeCapim: #1af51a;
+    --verde1: #008000;
+    --verde2: #38d138;
 }
 
 body {
@@ -18,17 +22,17 @@ body {
 }
 
 .leaflet-control-geocoder.leaflet-bar.leaflet-control {
-    z-index: 1;
     position: absolute;
     top: 10px;
-    left: -1500px;
+    left: -1750px;
+    transition: all 0.2s;
 }
 
 .leaflet-control-zoom.leaflet-bar.leaflet-control {
-    z-index: 1;
     position: absolute;
-    bottom: -850px;
-    right: -50px;
+    bottom: -890px;
+    right: -1802px;
+    transition: all 0.2s;
 }
 
 a.leaflet-control-zoom-in {
@@ -40,16 +44,14 @@ a.leaflet-control-zoom-out {
 }
 
 .leaflet-control-layers.leaflet-control {
-    z-index: 1;
     position: absolute;
-    bottom: -850px;
-    right: 10px;
+    bottom: -800px;
+    right: 60px;
+    transition: all 0.2s;
 }
 
 #elementosBody {
-    z-index: 2;
-    position: absolute;
-    display: flex;
+    z-index: 1;
 }
 
 #elementosBody img {
@@ -58,18 +60,66 @@ a.leaflet-control-zoom-out {
     margin: 20px;
 }
 
-#containerEsquerda {
+.offCanvasEsquerda {
     position: absolute;
     top: 0px;
     left: 0px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 600px;
+    height: 100vh;
+    transition: all 0.2s;
+}
+
+.offCanvasDireita {
+    position: absolute;
+    top: 0px;
+    left: 1278px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    width: 600px;
+    height: 100vh;
+    transition: all 0.2s;
+}
+
+.ocultarEsquerda {
+    left: -510px !important;
+    transition: all 0.2s;
+}
+
+.ocultarDireita {
+    left: 1790px !important;
+    transition: all 0.2s;
+}
+
+#painelEsquerda {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-image: linear-gradient(100deg, var(--azul1), var(--azul2));
+}
+
+#painelDireita {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-image: linear-gradient(200deg, var(--verde1), var(--verde2));
+}
+
+#containerEsquerda {
     display: flex;
     flex-direction: column;
 }
 
 #containerDireita {
-    position: absolute;
-    top: 0px;
-    left: 1790px;
     display: flex;
     flex-direction: column;
 }

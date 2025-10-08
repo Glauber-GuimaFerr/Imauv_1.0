@@ -1,3 +1,7 @@
+// Importações
+import OffCanvas from '/utils/offcanvas.js'
+import Msg from '/utils/msg.js'
+
 // Variáveis da API Leaflet
 let watchID = navigator.geolocation.getCurrentPosition(success, error, {enableHighAccuracy: true, timeout: 5000}) /* Permissão GPS */
 let map /* Mapa */
@@ -8,6 +12,10 @@ const zoom = 16 /* Escala */
 const elementosBody = document.querySelector('#elementosBody')
 const btnCurrPos = document.querySelector('#btnCurrPos')
 const btnUser = document.querySelector('#btnUser')
+const btnListProcess = document.querySelector('#btnListProcess')
+const btnEditProcess = document.querySelector('#btnEditProcess')
+const btnAddProcess = document.querySelector('#btnAddProcess')
+const btnHistory = document.querySelector('#btnHistory')
 
 // Função success
 function success(pos){
@@ -60,22 +68,26 @@ function success(pos){
                 let currentPos = L.marker([pos.coords.latitude, pos.coords.longitude], {icon: currentIcon}).bindPopup('Sua localização!').addTo(map) /* Posição atual */
 
                 // Função de marcar ponto
-                let ponto
+                let pontoAzul
 
                 map.on('click', function(e) {
                         lat = e.latlng.lat
                         lng = e.latlng.lng       
-                        if(ponto){
-                                map.removeLayer(ponto)
+                        if(pontoAzul){
+                                map.removeLayer(pontoAzul)
                         }
-                        ponto = L.marker(e.latlng, {icon: blueIcon}).addTo(map)
+                        pontoAzul = L.marker(e.latlng, {icon: blueIcon}).addTo(map)
                 })
 
                 // Barra de pesquisa
+                let pontoCinza
                 const geocoder = L.Control.geocoder({defaultMarkGeocode: false})
                 .on('markgeocode', function(e) {
                         let latlng = e.geocode.center
-                        const marker = L.marker(latlng, {icon: grayIcon}).addTo(map)
+                        if(pontoCinza){
+                                map.removeLayer(pontoCinza)
+                        }
+                        pontoCinza = L.marker(latlng, {icon: grayIcon}).addTo(map)
                         map.fitBounds(e.geocode.bbox)
                 }).addTo(map)
                 
@@ -83,7 +95,11 @@ function success(pos){
                 const barraPesquisa = document.querySelectorAll('.leaflet-control-geocoder.leaflet-bar.leaflet-control')[0]
                 const botoesZoom = document.querySelectorAll('.leaflet-control-zoom.leaflet-bar.leaflet-control')[0]
                 const botoesCamada = document.querySelectorAll('.leaflet-control-layers.leaflet-control')[0]
-                console.log(barraPesquisa.value)
+
+                // Criação do OffCanvas
+                const btnLeaflet = [barraPesquisa, botoesZoom, botoesCamada]
+                const btnList = [btnCurrPos, btnListProcess, btnEditProcess, btnAddProcess, btnUser, btnHistory]
+                OffCanvas.criar(elementosBody, btnLeaflet, btnList)
 
                 // Botão para retornar a posição atual
                 btnCurrPos.addEventListener('click', () => {
@@ -97,6 +113,26 @@ function success(pos){
                 // Botão para redirecionar até a página do usuário
                 btnUser.addEventListener('click', () => {
                         window.location.href = '/account'
+                })
+
+                // Botão para visualizar seus processos em andamento
+                btnListProcess.addEventListener('click', () => {
+                        OffCanvas.abrirEsquerda()
+                })
+
+                // Botão para editar seus processos em andamento
+                btnEditProcess.addEventListener('click', () => {
+                        OffCanvas.abrirEsquerda()
+                })
+
+                // Botão para adicionar processos
+                btnAddProcess.addEventListener('click', () => {
+                        OffCanvas.abrirEsquerda()
+                })
+
+                // Botão para visualizar histórico de processos já concluídos
+                btnHistory.addEventListener('click', () => {
+                        OffCanvas.abrirDireita()
                 })
         }else{
                 map.remove() /* Remoção do mapa */  

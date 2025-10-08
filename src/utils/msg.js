@@ -1,3 +1,7 @@
+export default class Msg {
+
+}
+
 // ImauvController
 /*
 const fs = require('fs');
@@ -115,6 +119,10 @@ module.exports = {
 };
 */
 
+
+
+
+
 // Models
 /*
 const express = require('express');
@@ -131,6 +139,10 @@ router.put('/editPoint', ImauvController.editPoints);
 
 module.exports = router;
 */
+
+
+
+
 
 // ImauvService
 /*
@@ -205,95 +217,4 @@ module.exports = {
         });
     }
 };
-*/
-
-// Offcanvas
-/*
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../shared/estoque_geral.css">
-    <link rel="stylesheet" href="./index.css">
-    <title>Estoque - BackOffice</title>
-</head>
-<body>
-    <div id="menuPrincipal" class="menuPrincipal ocultar">
-        <div class="menuItens">
-            <a href="#" target="fprincipal" class="btn_menuItem">Colaboradores</a>
-            <a href="#" class="btn_menuItem">CFB Cursos</a>
-            <a href="#" class="btn_menuItem">CFB Cursos</a>
-            <a href="#" class="btn_menuItem">CFB Cursos</a>
-            <a href="#" class="btn_menuItem">CFB Cursos</a>
-        </div>
-        <div>
-            <img src="../shared/img/menu.svg" id="btn_menuPrincipal" class="btn_menuPrincipal" alt="Botão do menu">    
-        </div>
-    </div>
-    <div id="principal" class="principal">
-        <iframe name="fprincipal" class="fprincipal"></iframe>
-    </div>
-    <script src="../shared/estoque_geral.js" type="module"></script>
-    <script src="./index.js" type="module"></script>
-</body>
-</html>
-*/
-
-/*
-const btn_menuPrincipal = document.querySelector('#btn_menuPrincipal')
-const menuPrincipal = document.querySelector('#menuPrincipal')
-const todosmenusprincipais = document.querySelectorAll('.btn_menuItem')
-
-btn_menuPrincipal.addEventListener('click', (evt) => {
-    menuPrincipal.classList.toggle('ocultar')
-})
-*/
-
-/*
-.menuPrincipal{
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    width: 240px;
-    height: 100vh;
-    transition: all .2s;
-}
-
-.ocultar{
-    left: -190px !important;
-    transition: all .2s;
-}
-
-.menuItens{
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-direction: column;
-    background-color: #ccc;
-    height: 100%;
-}
-
-.btn_menuItem{
-    cursor: pointer;
-    margin: 5px;
-    padding: 5px 15px;
-    width: 150px;
-    border: none;
-    border-radius: 5px;
-    text-decoration: none;
-    color: #000;
-    background-color: #888;
-    text-align: center;
-    color: #fff;
-}
-
-.btn_menuPrincipal{
-    cursor: pointer;
-    border: none;
-    width: 30px;
-}
 */
