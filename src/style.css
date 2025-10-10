@@ -4,11 +4,15 @@
 :root {
     --branco: white;
     --cinza: #c1c1c1;
+    --cinzaEscuro: #333;
+    --transparencia: rgba(0, 0, 0, 0.75);
+    --verde: green;
     --verdeCapim: #1af51a;
     --verdeFolha: #069c06;
     --fonte: "Kanit", sans-serif;
 }
 
+/* ESTILOS DEFAULT */
 * {
     margin: 0px;
     padding: 0px;
@@ -18,6 +22,7 @@
 
 button {
     width: 80%;
+    margin: 0px 5px;
     margin-bottom: 20px;
     padding: 10px;
     border: none;
@@ -33,7 +38,7 @@ button:hover {
 }
 
 a {
-    color: white;
+    color: var(--branco);
     transition: 0.5s;
 }
 
@@ -68,4 +73,67 @@ select {
 
 .json {
     white-space: pre-wrap;
+}
+
+/* CAIXA DE MENSAGEM */
+#msgFundo {
+    z-index: 999;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--transparencia);
+    animation: fadeInEffect 1s forwards;
+}
+
+@keyframes fadeInEffect {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+#msg {
+    width: 400px;
+}
+
+#headerMsg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--branco);
+    border-radius: 10px 10px 0px 0px;
+    padding: 5px;
+}
+
+#bodyMsg {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: var(--cinza);
+    color: var(--cinzaEscuro);
+    padding: 10px;
+}
+
+#footerMsg {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5px;
+    background-color: var(--verdeFolha);
+    border-radius: 0px 0px 10px 10px;
+}
+
+#footerMsg button {
+    margin-bottom: 1px;
+}
+
+.btnMsg {
+    background-color: var(--verde);
 }

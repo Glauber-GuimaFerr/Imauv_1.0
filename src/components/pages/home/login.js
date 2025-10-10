@@ -1,9 +1,14 @@
+// Importações
+import Msg from '/utils/msg.js'
+
+// Variáveis importantes
 const f_email = document.querySelector('#f_email')
 const f_senha = document.querySelector('#f_senha')
 const btn = document.querySelector('#btn_login')
 
 const sv = 'http://localhost:3000'
 
+// Botão de login
 btn.addEventListener('click', () => {
     fetch(`${sv}/login/${f_email.value}/${f_senha.value}`)
     .then(res => res.json())
@@ -15,8 +20,27 @@ btn.addEventListener('click', () => {
             sessionStorage.setItem('endereco_user', data[0].endereco)
             window.location.href = '/index'
         }else{
-            alert('Erro')
+            const config = {
+                titulo: "Erro",
+                texto: "Servidor apresentou problemas de conexão ou funcionamento, tente se conectar mais tarde.",
+                cor: "#9c0606",
+                tipo: "ok",
+                ok: () => {},
+                confirmar: () => {}
+            }
+            Msg.mostrar(config)
         }
     })
-    .catch(err => console.log(err))
+    .catch(err => {
+        console.log(err)
+        const config = {
+                titulo: "Erro",
+                texto: "Dados não encontrados no sistema!",
+                cor: "#9c0606",
+                tipo: "ok",
+                ok: () => {},
+                confirmar: () => {}
+        }
+        Msg.mostrar(config)
+    })
 })

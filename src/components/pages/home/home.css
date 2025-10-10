@@ -6,6 +6,7 @@
     --verde: green;
 }
 
+/* PÁGINA DE LOGIN E CADASTRO */
 body {
     background: url("/img/home/background.jpg") center center no-repeat fixed;
     background-size: cover;

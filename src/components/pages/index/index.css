@@ -12,6 +12,7 @@ body {
     overflow: hidden; 
 }
 
+/* ELEMENTOS LEAFLET */
 #mapID {
     z-index: 0;
     position: absolute;
@@ -50,6 +51,7 @@ a.leaflet-control-zoom-out {
     transition: all 0.2s;
 }
 
+/* OFFCANVAS E BOTÕES */
 #elementosBody {
     z-index: 1;
 }

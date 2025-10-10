@@ -9,6 +9,7 @@
     --branco: #fff;
 }
 
+/* PÁGINA DO USUÁRIO */
 #grade {
     width: 100vw;
     height: 100vh;
@@ -48,9 +49,9 @@
 
 .tooltip {
     opacity: 0;
-    background-color: #333;
+    background-color: var(--cinzaEscuro);
     text-align: center;
-    color: #fff;
+    color: var(--branco);
     width: 160px;
     padding: 5px;
     border-radius: 5px;
@@ -85,5 +86,5 @@
     margin-top: 10px;
     margin-left: 40px;
     font-size: 40pt;
-    color: #fff;
+    color: var(--branco);
 }
