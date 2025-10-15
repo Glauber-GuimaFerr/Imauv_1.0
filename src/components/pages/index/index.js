@@ -117,22 +117,34 @@ function success(pos){
 
                 // Botão para visualizar seus processos em andamento
                 btnListProcess.addEventListener('click', () => {
-                        OffCanvas.abrirEsquerda()
+                        const config = {
+                                titulo: "Seus processos"
+                        }
+                        OffCanvas.abrirEsquerda(config)
                 })
 
                 // Botão para editar seus processos em andamento
                 btnEditProcess.addEventListener('click', () => {
-                        OffCanvas.abrirEsquerda()
+                        const config = {
+                                titulo: "Editar processos"
+                        }
+                        OffCanvas.abrirEsquerda(config)
                 })
 
                 // Botão para adicionar processos
                 btnAddProcess.addEventListener('click', () => {
-                        OffCanvas.abrirEsquerda()
+                        const config = {
+                                titulo: "Adicionar processos"
+                        }
+                        OffCanvas.abrirEsquerda(config)
                 })
 
                 // Botão para visualizar histórico de processos já concluídos
                 btnHistory.addEventListener('click', () => {
-                        OffCanvas.abrirDireita()
+                        const config = {
+                                titulo: "Histórico de processos"
+                        }
+                        OffCanvas.abrirDireita(config)
                 })
         }else{
                 map.remove() /* Remoção do mapa */  

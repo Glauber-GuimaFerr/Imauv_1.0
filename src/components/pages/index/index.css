@@ -6,6 +6,7 @@
     --verdeCapim: #1af51a;
     --verde1: #008000;
     --verde2: #38d138;
+    --cinza: #c1c1c1;
 }
 
 body {
@@ -99,7 +100,7 @@ a.leaflet-control-zoom-out {
 #painelEsquerda {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     width: 100vw;
     height: 100vh;
@@ -109,11 +110,34 @@ a.leaflet-control-zoom-out {
 #painelDireita {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     width: 100vw;
     height: 100vh;
     background-image: linear-gradient(200deg, var(--verde1), var(--verde2));
+}
+
+.cabecalhoPainel {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 1px solid var(--cinza);
+}
+
+.cabecalhoPainel p {
+    font-size: 25pt;
+}
+
+.btnFechar {
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    transition: all 0.2s;
+}
+
+.btnFechar:hover {
+    opacity: 0.5;
 }
 
 #containerEsquerda {
