@@ -9,8 +9,8 @@ const btn = document.querySelector('#btn_login')
 const sv = 'http://localhost:3000'
 
 // Botão de login
-btn.addEventListener('click', () => {
-    fetch(`${sv}/login/${f_email.value}/${f_senha.value}`)
+btn.addEventListener('click', async () => {
+    await fetch(`${sv}/login/${f_email.value}/${f_senha.value}`)
     .then(res => res.json())
     .then(data => {
         if(data.status != 500){
@@ -22,7 +22,7 @@ btn.addEventListener('click', () => {
         }else{
             const config = {
                 titulo: "Erro",
-                texto: "Servidor apresentou problemas de conexão ou funcionamento, tente se conectar mais tarde.",
+                texto: "Servidor apresentou problemas de conexão ou funcionamento, tente novamente mais tarde.",
                 cor: "#9c0606",
                 tipo: "ok",
                 ok: () => {},

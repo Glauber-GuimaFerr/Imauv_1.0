@@ -61,6 +61,20 @@ app.post('/cadastro', (req, res) => {
   });
 });
 
+// Adicionar e Editar pontos
+app.post('/adicionar', (req, res) => {
+  const { n_agente, cod_processo, data_inicio, descricao, localizacao, classificacao, etapa, prazo, latitude, longitude } = req.body;
+  const query = 'INSERT INTO ponto (id_ponto, n_agente, cod_processo, data_inicio, descricao, localizacao, classificacao, etapa, prazo, latitude, longitude) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+
+  connection.query(query, [n_agente, cod_processo, data_inicio, descricao, localizacao, classificacao, etapa, prazo, latitude, longitude], (error, results) => {
+    if(error){
+      console.error('Erro ao executar a query:', error);
+      return res.status(500).send('Erro ao inserir dados no servidor');
+    }
+    res.json(results);
+  });
+});
+
 // URL principal
 app.listen(port, () => {
   console.log(`Servidor rodando em http://localhost:${port}`);

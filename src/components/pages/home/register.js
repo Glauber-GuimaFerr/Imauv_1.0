@@ -49,7 +49,7 @@ btn.addEventListener('click', () => {
         console.log(err)
         const config = {
             titulo: "Erro",
-            texto: "Servidor apresentou problemas de conexão ou funcionamento, tente se cadastrar mais tarde.",
+            texto: "Servidor apresentou problemas de conexão ou funcionamento, tente novamente mais tarde.",
             cor: "#9c0606",
             tipo: "ok",
             ok: () => {},

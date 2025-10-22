@@ -1,3 +1,7 @@
+// Importações
+import Card from "/utils/card.js"
+import Form from "/utils/form.js"
+
 export default class OffCanvas {
     static config = null /* Parâmetros */
     static btnLeaflet = null
@@ -120,6 +124,17 @@ export default class OffCanvas {
         }else{
             this.btnLeaflet[0].style.left = "-1230px"
         }
+
+        if(config.tipo == "p"){
+            this.conteudoEsquerda.innerHTML = ""
+            this.conteudoEsquerda.appendChild(Card.criar("p"))
+        }else if(config.tipo == "a"){
+            this.conteudoEsquerda.innerHTML = ""
+            this.conteudoEsquerda.appendChild(Form.criar("a"))
+        }else if(config.tipo == "e"){
+            this.conteudoEsquerda.innerHTML = ""
+            this.conteudoEsquerda.appendChild(Form.criar("e"))
+        }
     }
 
     // Painel da direita
@@ -135,7 +150,10 @@ export default class OffCanvas {
             this.btnLeaflet[1].style.right = "-1280px"
             this.btnLeaflet[2].style.right = "580px"
         }
-    }
 
-    // Botões de fechar painel
+        if(config.tipo == "h"){
+            this.conteudoDireita.innerHTML = ""
+            this.conteudoDireita.appendChild(Card.criar("h"))
+        }
+    }
 }

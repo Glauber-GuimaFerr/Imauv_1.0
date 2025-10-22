@@ -6,6 +6,16 @@ import Msg from '/utils/msg.js'
 let watchID = navigator.geolocation.getCurrentPosition(success, error, {enableHighAccuracy: true, timeout: 5000}) /* Permissão GPS */
 let map /* Mapa */
 let lat, lng /* Coordenadas */
+const lati = document.createElement('input')
+lati.setAttribute("type", "hidden")
+lati.setAttribute("id", "latitude")
+lati.setAttribute("name", "latitude")
+document.body.appendChild(lati)
+const longi = document.createElement('input')
+longi.setAttribute("type", "hidden")
+longi.setAttribute("id", "longitude")
+longi.setAttribute("name", "longitude")
+document.body.appendChild(longi)
 const zoom = 16 /* Escala */
 
 // Variáveis importantes
@@ -69,10 +79,14 @@ function success(pos){
 
                 // Função de marcar ponto
                 let pontoAzul
+                btnAddProcess.style.display = 'none'
 
                 map.on('click', function(e) {
                         lat = e.latlng.lat
-                        lng = e.latlng.lng       
+                        lng = e.latlng.lng
+                        lati.value = lat
+                        longi.value = lng   
+                        btnAddProcess.style.display = 'block' 
                         if(pontoAzul){
                                 map.removeLayer(pontoAzul)
                         }
@@ -118,6 +132,7 @@ function success(pos){
                 // Botão para visualizar seus processos em andamento
                 btnListProcess.addEventListener('click', () => {
                         const config = {
+                                tipo: "p",
                                 titulo: "Seus processos"
                         }
                         OffCanvas.abrirEsquerda(config)
@@ -126,6 +141,7 @@ function success(pos){
                 // Botão para editar seus processos em andamento
                 btnEditProcess.addEventListener('click', () => {
                         const config = {
+                                tipo: "e",
                                 titulo: "Editar processos"
                         }
                         OffCanvas.abrirEsquerda(config)
@@ -134,6 +150,7 @@ function success(pos){
                 // Botão para adicionar processos
                 btnAddProcess.addEventListener('click', () => {
                         const config = {
+                                tipo: "a",
                                 titulo: "Adicionar processos"
                         }
                         OffCanvas.abrirEsquerda(config)
@@ -142,6 +159,7 @@ function success(pos){
                 // Botão para visualizar histórico de processos já concluídos
                 btnHistory.addEventListener('click', () => {
                         const config = {
+                                tipo: "h",
                                 titulo: "Histórico de processos"
                         }
                         OffCanvas.abrirDireita(config)
