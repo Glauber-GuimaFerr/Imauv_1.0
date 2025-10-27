@@ -27,6 +27,8 @@ const btnEditProcess = document.querySelector('#btnEditProcess')
 const btnAddProcess = document.querySelector('#btnAddProcess')
 const btnHistory = document.querySelector('#btnHistory')
 
+const sv = 'http://localhost:3000'
+
 // Função success
 function success(pos){
         if(map === undefined){
@@ -63,7 +65,7 @@ function success(pos){
                                 shadowSize: [50, 64],
                                 iconAnchor: [22, 58],
                                 shadowAnchor: [4, 62],
-                                popupAnchor: [3, -30]
+                                popupAnchor: [3, -60]
                         }
                 })  
                 
@@ -92,6 +94,76 @@ function success(pos){
                         }
                         pontoAzul = L.marker(e.latlng, {icon: blueIcon}).addTo(map)
                 })
+
+                // Verificação da presença e renderização dos pontos no mapa
+                const carregarPontos = () => {
+                        return fetch(`${sv}/verificarpontos`)
+                                .then(res => res.json())
+                                .then(data => {
+                                        return data.quantidade
+                                })
+                                .catch(err => {
+                                        console.log(err);
+                                        return 0
+                                })
+                }
+                carregarPontos()
+                .then(qtdPontos => {
+                        if(qtdPontos > 0){
+                                fetch(`${sv}/todospontos`)
+                                .then(res => res.json())
+                                .then(data => {
+                                        let clrIcon = greenIcon
+                                        data.forEach(point => {
+                                                const dataString = point.data_inicio
+                                                const dataStr = new Date(dataString)
+                                                const dia = dataStr.getDate()
+                                                const mes = dataStr.getMonth() + 1
+                                                const ano = dataStr.getFullYear()
+                                                const dataFormatada = `${dia < 10 ? '0' + dia : dia}/${mes < 10 ? '0' + mes : mes}/${ano}`
+
+                                                const dataLimite = dataStr.setDate(dataStr.getDate() + point.prazo)
+                                                const dataAtual = new Date()
+                                                const prazo = dataAtual >= dataLimite ? 0 : Math.ceil(Math.abs(dataAtual - dataLimite)/(1000 * 60 * 60 * 24))
+
+                                                if(prazo > 180 || (prazo <= 180 && prazo > 90)){
+                                                        clrIcon = greenIcon
+                                                }else if(prazo <= 90 && prazo > 30){
+                                                        clrIcon = yellowIcon
+                                                }else{
+                                                        clrIcon = redIcon
+                                                } 
+                                                
+                                                const emojiAlrt = '&#x26A0 &#x26A0 &#x26A0 &#x26A0 &#x26A0 <strong>Indeferido</strong> &#x26A0 &#x26A0 &#x26A0 &#x26A0 &#x26A0'
+                                                if(point.etapa != 'Concluída'){
+                                                        const marker = L.marker([point.latitude, point.longitude], {icon: clrIcon}).addTo(map)
+                                                        marker.bindPopup(`${prazo == 0 ? emojiAlrt : ''}<p><strong>Processo:</strong> ${point.cod_processo}</p>
+                                                        <p><strong>Início:</strong> ${dataFormatada}</p>
+                                                        <p><strong>Descrição:</strong> ${point.descricao}</p>
+                                                        <p><strong>Endereço:</strong> ${point.localizacao}</p>
+                                                        <p><strong>Classificação:</strong> ${point.classificacao}</p>
+                                                        <p><strong>Etapa:</strong> ${point.etapa}</p>
+                                                        <p><strong>Prazo:</strong> ${prazo} dias</p>`)
+                                                }
+                                        })
+                                })
+                                .catch(err => {
+                                        console.log(err)
+                                        const config = {
+                                                titulo: "Erro",
+                                                texto: "Dados não encontrados no sistema!",
+                                                cor: "#9c0606",
+                                                tipo: "ok",
+                                                ok: () => {},
+                                                confirmar: () => {}
+                                        }
+                                        Msg.mostrar(config)
+                                })
+                        }
+                })
+
+                
+                
 
                 // Barra de pesquisa
                 let pontoCinza

@@ -75,6 +75,58 @@ app.post('/adicionar', (req, res) => {
   });
 });
 
+// Dados dos pontos
+app.get('/verificarpontos', (req, res) => { 
+  const query = 'SELECT COUNT(*) AS quantidade FROM ponto';
+
+  connection.query(query, (error, results) => {
+    if(error){
+      console.error('Erro ao executar a query:', error);
+      return res.status(500).send('Erro no servidor');
+    }
+    res.json(results[0]);
+  });
+});
+
+app.get('/todospontos', (req, res) => { 
+  const query = 'SELECT cod_processo, data_inicio, descricao, localizacao, classificacao, etapa, prazo, latitude, longitude FROM ponto';
+
+  connection.query(query, (error, results) => {
+    if(error){
+      console.error('Erro ao executar a query:', error);
+      return res.status(500).send('Erro no servidor');
+    }
+    res.json(results);
+  });
+});
+
+// Dados dos cards
+app.get('/meuspontos/:cpf', (req, res) => { 
+  const cpf = req.params.cpf;
+  const query = 'SELECT nome, email, cpf, endereco FROM ponto WHERE n_agente = ?';
+
+  connection.query(query, cpf,(error, results) => {
+    if(error){
+      console.error('Erro ao executar a query:', error);
+      return res.status(500).send('Erro no servidor');
+    }
+    res.json(results);
+  });
+});
+
+app.get('/historico', (req, res) => { 
+  const cpf = req.params.cpf;
+  const query = 'SELECT nome, email, cpf, endereco FROM ponto WHERE n_agente = ?';
+
+  connection.query(query, cpf,(error, results) => {
+    if(error){
+      console.error('Erro ao executar a query:', error);
+      return res.status(500).send('Erro no servidor');
+    }
+    res.json(results);
+  });
+});
+
 // URL principal
 app.listen(port, () => {
   console.log(`Servidor rodando em http://localhost:${port}`);

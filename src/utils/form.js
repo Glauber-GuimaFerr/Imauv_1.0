@@ -131,7 +131,7 @@ export default class Form {
         indexForm.appendChild(campoPrazo)
 
         const labelPrazo = document.createElement("label")
-        labelPrazo.innerHTML = "Prazo (dias):"
+        labelPrazo.innerHTML = "Prazo estimado (dias):"
         campoPrazo.appendChild(labelPrazo)
 
         const prazo = document.createElement("input")
