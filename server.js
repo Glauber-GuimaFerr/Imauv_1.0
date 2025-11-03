@@ -101,9 +101,9 @@ app.get('/todospontos', (req, res) => {
 });
 
 // Dados dos cards
-app.get('/meuspontos/:cpf', (req, res) => { 
+app.get('/meuscards/:cpf', (req, res) => { 
   const cpf = req.params.cpf;
-  const query = 'SELECT nome, email, cpf, endereco FROM ponto WHERE n_agente = ?';
+  const query = 'SELECT a.nome, b.id_ponto, b.cod_processo, b.etapa, b.latitude, b.longitude FROM agente as a JOIN ponto as b WHERE b.n_agente = ?';
 
   connection.query(query, cpf,(error, results) => {
     if(error){
@@ -116,7 +116,7 @@ app.get('/meuspontos/:cpf', (req, res) => {
 
 app.get('/historico', (req, res) => { 
   const cpf = req.params.cpf;
-  const query = 'SELECT nome, email, cpf, endereco FROM ponto WHERE n_agente = ?';
+  const query = 'SELECT a.nome, b.id_ponto, b.cod_processo, b.etapa FROM agente as a JOIN ponto as b';
 
   connection.query(query, cpf,(error, results) => {
     if(error){

@@ -104,6 +104,7 @@ a.leaflet-control-zoom-out {
     align-items: center;
     width: 100vw;
     height: 100vh;
+    overflow-y: auto;
     background-image: linear-gradient(100deg, var(--azul1), var(--azul2));
 }
 
@@ -114,6 +115,7 @@ a.leaflet-control-zoom-out {
     align-items: center;
     width: 100vw;
     height: 100vh;
+    overflow-y: auto;
     background-image: linear-gradient(200deg, var(--verde1), var(--verde2));
 }
 
@@ -140,8 +142,13 @@ a.leaflet-control-zoom-out {
     opacity: 0.5;
 }
 
+#conteudoEsquerda, #conteudoDireita {
+    width: 100%;
+    overflow-x: hidden;
+}
+
 #conteudoEsquerda label {
-    font-size: 1.1em;
+    font-size: 0.9em;
 }
 
 #conteudoEsquerda input, #conteudoEsquerda textarea, #conteudoEsquerda select {
@@ -160,5 +167,14 @@ a.leaflet-control-zoom-out {
 }
 
 .btn {
+    cursor: pointer;
+}
+
+/* CARD */
+.cardDiv {
+    background-color: white;
+    width: 90%;
+    padding: 5px;
+    margin: 20px 25px;
     cursor: pointer;
 }

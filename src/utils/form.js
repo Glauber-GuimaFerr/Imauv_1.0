@@ -1,5 +1,4 @@
 // Importações
-import Card from "/utils/card.js"
 import Msg from '/utils/msg.js'
 
 export default class Form {

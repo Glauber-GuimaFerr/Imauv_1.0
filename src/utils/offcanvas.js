@@ -1,5 +1,4 @@
 // Importações
-import Card from "/utils/card.js"
 import Form from "/utils/form.js"
 
 export default class OffCanvas {
@@ -127,7 +126,6 @@ export default class OffCanvas {
 
         if(config.tipo == "p"){
             this.conteudoEsquerda.innerHTML = ""
-            this.conteudoEsquerda.appendChild(Card.criar("p"))
         }else if(config.tipo == "a"){
             this.conteudoEsquerda.innerHTML = ""
             this.conteudoEsquerda.appendChild(Form.criar("a"))
@@ -153,7 +151,6 @@ export default class OffCanvas {
 
         if(config.tipo == "h"){
             this.conteudoDireita.innerHTML = ""
-            this.conteudoDireita.appendChild(Card.criar("h"))
         }
     }
 }
