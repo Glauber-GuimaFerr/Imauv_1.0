@@ -214,7 +214,6 @@ function success(pos){
                                 let cards = []
                                 data.forEach(card => {
                                         const config = {
-                                                tipo: "esq",
                                                 agente: card.nome,
                                                 id: card.id_ponto,
                                                 processo: card.cod_processo,
@@ -285,7 +284,51 @@ function success(pos){
                                 tipo: "h",
                                 titulo: "Histórico de processos"
                         }
+
                         OffCanvas.abrirDireita(config)
+
+                        fetch(`${sv}/historico`)
+                        .then(res => res.json())
+                        .then(data => {
+                                let cards = []
+                                data.forEach(card => {
+                                        const config = {
+                                                agente: card.nome,
+                                                id: card.id_ponto,
+                                                processo: card.cod_processo,
+                                                etapa: card.etapa
+                                        }
+                                        cards.push(Card.criar(config))
+                                })
+                                if(document.getElementById("conteudoDireita")){
+                                        cards.forEach(c => {
+                                                c.addEventListener("click", () => {
+                                                        const config = {
+                                                                titulo: "Processo concluído",
+                                                                texto: "Este processo já foi concluído, se necessário comunique-se com a supervisão.",
+                                                                cor: "#008000",
+                                                                tipo: "ok",
+                                                                ok: () => {},
+                                                                confirmar: () => {}
+                                                        }
+                                                        Msg.mostrar(config)
+                                                })
+                                                document.getElementById("conteudoDireita").appendChild(c)
+                                        })
+                                }
+                        })
+                        .catch(err => {
+                                        console.log(err)
+                                        const config = {
+                                                titulo: "Erro",
+                                                texto: "Dados não encontrados no sistema!",
+                                                cor: "#9c0606",
+                                                tipo: "ok",
+                                                ok: () => {},
+                                                confirmar: () => {}
+                                        }
+                                        Msg.mostrar(config)
+                        })
                 })
         }else{
                 map.remove() /* Remoção do mapa */  

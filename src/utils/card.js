@@ -27,15 +27,19 @@ export default class Card {
         this.cardEtapa.innerHTML = `<strong>Etapa:</strong> ${config.etapa}`
         this.cardDiv.appendChild(this.cardEtapa)
 
-        this.cardLatitude = document.createElement("input")
-        this.cardLatitude.setAttribute("type", "hidden")
-        this.cardLatitude.setAttribute("value", `${config.latitude}`)
-        this.cardDiv.appendChild(this.cardLatitude)
+        if(config.latitude != null){        
+            this.cardLatitude = document.createElement("input")
+            this.cardLatitude.setAttribute("type", "hidden")
+            this.cardLatitude.setAttribute("value", `${config.latitude}`)
+            this.cardDiv.appendChild(this.cardLatitude)
+        }
 
-        this.cardLongitude = document.createElement("input")
-        this.cardLongitude.setAttribute("type", "hidden")
-        this.cardLongitude.setAttribute("value", `${config.longitude}`)
-        this.cardDiv.appendChild(this.cardLongitude)
+        if(config.longitude != null){
+            this.cardLongitude = document.createElement("input")
+            this.cardLongitude.setAttribute("type", "hidden")
+            this.cardLongitude.setAttribute("value", `${config.longitude}`)
+            this.cardDiv.appendChild(this.cardLongitude)
+        }
 
         return this.cardDiv
     }
